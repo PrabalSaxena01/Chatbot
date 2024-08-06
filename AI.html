@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Prompt Example</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "@google/generative-ai": "https://esm.run/@google/generative-ai"
+          }
+        }
+      </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        // Fetch your API_KEY
+        const API_KEY = "AIzaSyDzjg42LAXGDk_4gmqBPFPbTKMovr0CUUU";
+
+        // Access your API key (see "Set up your API key" above)
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        // ...
+
+        const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+        async function run() {
+            // For text-only input, use the gemini-pro model
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+            const prompt = "Bhagvad Geeta Quote for low confidence and exact shloka." ;
+            
+
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+            document.write(text);
+            
+        }
+
+        run();
+    </script>
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to Prompt Example</h1>
+    <button onclick="promptUser()">Click me</button>
+    <p id="response"></p>
+    <p value=text>  </p>
+</body>
+
+</html>
